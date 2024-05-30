@@ -4,7 +4,7 @@ COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 CAR_LIST = []
-CARS_QTY = 60
+CARS_QTY = 50
 
 
 class CarManager(Turtle):

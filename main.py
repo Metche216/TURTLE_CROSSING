@@ -1,7 +1,7 @@
 import time
 from turtle import Screen
 from player import Player
-from car_manager import CarManager, CAR_LIST as CL, CARS_QTY as CQ
+from car_manager import CarManager, CAR_LIST as CL, CARS_QTY as CQ,MOVE_INCREMENT as MI
 from scoreboard import Scoreboard
 import random
 
@@ -11,6 +11,7 @@ screen.tracer(0)
 
 player_1 = Player()
 
+score = Scoreboard()
 
 
 screen.listen()
@@ -29,9 +30,10 @@ while game_is_on:
             car = CarManager()
             
             
-    
     if player_1.ycor() >260:
         player_1.reset()
+        MI += 5
+        score.lvl_passed()
     
     
     
@@ -40,7 +42,14 @@ while game_is_on:
         if car.xcor() < -340:
             CL.remove(car)
             del car
+        elif car.distance(player_1) < 20 :
+            print('collision!!!')
+            game_is_on = False
+            
         else:
             car.move()
     
     
+print('GAME OVER')
+
+screen.exitonclick()
